@@ -91,7 +91,7 @@ def tryagain():  # asks user if they would liek to try game again
 
 def usermove(word):  # main gameplay function
     lives = 0
-
+    previousguesses = []
     while True:
 
         x = input("Please input a letter: ").lower().strip()  # move input
@@ -99,11 +99,17 @@ def usermove(word):  # main gameplay function
         if len(x) == 1:  # makes sure user inputted one character only
             if x.isalpha():  # makes sure user inputted alphabetical character only
                 if x in word:
-                    # loops over every letter and find if letter matches and places it on board if so
-                    for n in range(0, len(word)):
-                        if word[n] == x:
-                            wordboard[n] = x
+                    if x not in previousguesses:  # make sure not already guessed
+                        previousguesses.append(x)
+                        for n in range(0, len(word)):
+                            if word[n] == x:
+                                wordboard[n] = x
                     # prints digital art of hangman based on how many lives are left
+
+                    else:
+                        print(
+                            ' You have already guessed {x}, please input another letter')
+                    # loops over every letter and find if letter matches and places it on board if so
                     print(currentlife[lives])
                     print('')
                     printboard()
