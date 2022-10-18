@@ -1,18 +1,6 @@
 import random
 from wordbank import wordbank
 
-# GLOBAL VARIABLES
-# wordbank=[]
-# with open("file.txt", "r") as file:
-# file = open("file.txt", "r")
-# f = file.readlines()
-# for line in f:
-#     if line[-1] == '\n':
-#         wordbank.append(line[:-1])
-#     else:
-#         wordbank.append(line)
-
-
 pastmoves = []
 
 wordboard = []
