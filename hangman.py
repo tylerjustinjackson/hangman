@@ -1,5 +1,8 @@
 import random
 from wordbank import wordbank
+from time import sleep
+from hangmanart import logo
+
 
 pastmoves = []
 
@@ -63,8 +66,9 @@ var7 = '''
 _____'''
 currentlife = [var7, var6, var5, var4, var3, var2, var1]
 
-
 # GLOBAL FUNCTIONS
+
+
 def startboard():  # created blank board same length as random word
     for i in range(0, len(word)):
         wordboard.insert(i, '_')
@@ -77,7 +81,7 @@ def printboard():  # prints current board
 
 
 def newword():  # created new random word from stored list
-    word = wordbank[random.randint(0, len(wordbank)-1)]
+    word = random.choice(wordbank)
     return word
 
 
@@ -138,15 +142,21 @@ def usermove(word):  # main gameplay function
 if __name__ == '__main__':
     try:
         while True:
+            print(logo)
             print('')
+            sleep(1)
             word = newword()  # makes new word
             startboard()  # starts game
+            print('Your word: ')
+            printboard()
+            print('')
             usermove(word)  # starts main gameplay
             z = tryagain()  # want to try again?
             if z == True:  # if yes, continue
                 print('')
                 continue
             elif z == False:  # if no, BYE!
+                print(logo)
                 break
 
     except:
